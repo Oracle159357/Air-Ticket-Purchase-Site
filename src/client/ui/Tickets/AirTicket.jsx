@@ -48,6 +48,7 @@ export class AirTickets extends PureComponent {
 
   async loadPrice() {
     const { tickets } = await getAllTicket();
+    tickets.sort((t1, t2) => t1.price - t2.price)
     this.setState({ tickets });
   }
 

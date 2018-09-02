@@ -50,6 +50,27 @@ export class AirTickets extends PureComponent {
   }
 
   render() {
-
+    return(
+    <div className="main-background">
+      <div className="mobile-version">
+        <div className="style-logo-company">
+          <img alt="Not Found" src={imageCompanyOfTickets} />
+        </div>
+        <div>
+          <div>
+            <Button
+              className="show-button max-size-show-filter"
+              onClick={() => this.onClick()}
+              outline
+              color="primary"
+            >
+              Show filter
+            </Button>
+            {' '}
+          </div>
+        </div>
+      </div>
+    </div>
+    )
   }
 }

@@ -1,0 +1,29 @@
+.main-background {
+  min-height: 100vh;
+  @media (min-width: 1200px) {
+    max-width: 77vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+.mobile-version {
+  @media (max-width: 776px) {
+    margin-right: 1em;
+    margin-left: 1em;
+  }
+}
+.style-logo-company {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-top: 2em;
+   margin-bottom: 2em;
+ }
+.show-button {
+  @media (min-width: 767px) {
+    max-width: 77vw;
+    display: none;
+  }
+}
+max-size-show-filter

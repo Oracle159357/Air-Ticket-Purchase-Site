@@ -7,25 +7,29 @@
   }
 
 }
+
 .mobile-version {
   @media (max-width: 776px) {
     margin-right: 1em;
     margin-left: 1em;
   }
 }
+
 .style-logo-company {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   margin-top: 2em;
-   margin-bottom: 2em;
- }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
 .show-button {
   @media (min-width: 767px) {
     max-width: 77vw;
     display: none;
   }
 }
+
 .max-size-show-filter {
   width: 100%;
   margin-bottom: 10px;
@@ -86,6 +90,14 @@
 .currency-checkbox-background {
   &:hover {
     background-color: #f2fcff;
+
+  }
+}
+
+.flights-block {
+  margin-top: -14px;
+  @media (max-width: 776px) {
+    margin-top: 10px;
 
   }
 }

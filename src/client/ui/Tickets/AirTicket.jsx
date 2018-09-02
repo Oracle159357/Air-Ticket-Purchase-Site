@@ -90,108 +90,129 @@ export class AirTickets extends PureComponent {
           </div>
         </div>
         <Container>
-          this.state.childVisible
-          ? (
-          <Col className="filter-block" lg={3} md={3} sm={2} xs={12}>
-            <div>
-              <div className="marginDown">
-                ВАЛЮТА
-              </div>
-              <div className="currency-btn-group">
-                <ButtonGroup>
-                  <Button
-                    outline
-                    color="info"
-                    onClick={() => this.onRadioBtnClick('₽')}
-                    active={this.state.currentStateOfButton === '₽'}
-                  >
-                    RUB
-                  </Button>
-                  <Button
-                    outline
-                    color="info"
-                    onClick={() => this.onRadioBtnClick('$')}
-                    active={this.state.currentStateOfButton === '$'}
-                  >
-                    USD
-                  </Button>
-                  <Button
-                    outline
-                    color="info"
-                    onClick={() => this.onRadioBtnClick('€')}
-                    active={this.state.currentStateOfButton === '€'}
-                  >
-                    EUR
-                  </Button>
-                </ButtonGroup>
-              </div>
-              <div>
-                <div className="marginMiddle">
-                  КОЛИЧЕСТВО ПЕРЕСАДОК
-                </div>
-                <div>
-                  <div
-                    className="currency-checkbox custom-control custom-checkbox margin  marginDown"
-                  >
-                    <input
-                      checked={this.state.stateOfCheckBox.length === 4}
-                      onChange={() => this.handleCheckAll()}
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="Checked1"
-                    />
-                    <label className="custom-control-label" htmlFor="Checked1">Все</label>
-                  </div>
-                  <div
-                    className="currency-checkbox custom-control
+          <Row>
+            {
+              this.state.childVisible
+                ? (
+                  <Col className="filter-block" lg={3} md={3} sm={2} xs={12}>
+                    <div>
+                      <div className="marginDown">
+                        ВАЛЮТА
+                      </div>
+                      <div className="currency-btn-group">
+                        <ButtonGroup>
+                          <Button
+                            outline
+                            color="info"
+                            onClick={() => this.onRadioBtnClick('₽')}
+                            active={this.state.currentStateOfButton === '₽'}
+                          >
+                            RUB
+                          </Button>
+                          <Button
+                            outline
+                            color="info"
+                            onClick={() => this.onRadioBtnClick('$')}
+                            active={this.state.currentStateOfButton === '$'}
+                          >
+                            USD
+                          </Button>
+                          <Button
+                            outline
+                            color="info"
+                            onClick={() => this.onRadioBtnClick('€')}
+                            active={this.state.currentStateOfButton === '€'}
+                          >
+                            EUR
+                          </Button>
+                        </ButtonGroup>
+                      </div>
+                      <div>
+                        <div className="marginMiddle">
+                          КОЛИЧЕСТВО ПЕРЕСАДОК
+                        </div>
+                        <div>
+                          <div
+                            className="currency-checkbox custom-control custom-checkbox margin  marginDown"
+                          >
+                            <input
+                              checked={this.state.stateOfCheckBox.length === 4}
+                              onChange={() => this.handleCheckAll()}
+                              type="checkbox"
+                              className="custom-control-input"
+                              id="Checked1"
+                            />
+                            <label className="custom-control-label" htmlFor="Checked1">Все</label>
+                          </div>
+                          <div
+                            className="currency-checkbox custom-control
                               custom-checkbox margin marginDown"
-                  >
-                    <input
-                      checked={this.state.stateOfCheckBox.includes(0)}
-                      onChange={() => this.handleCheck(0)}
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="Checked2"
+                          >
+                            <input
+                              checked={this.state.stateOfCheckBox.includes(0)}
+                              onChange={() => this.handleCheck(0)}
+                              type="checkbox"
+                              className="custom-control-input"
+                              id="Checked2"
+                            />
+                            <label className="custom-control-label" htmlFor="Checked2">Без пересадок</label>
+                          </div>
+                          <div className="currency-checkbox custom-control custom-checkbox margin, marginDown">
+                            <input
+                              checked={this.state.stateOfCheckBox.includes(1)}
+                              onChange={() => this.handleCheck(1)}
+                              type="checkbox"
+                              className="custom-control-input"
+                              id="Checked3"
+                            />
+                            <label className="custom-control-label" htmlFor="Checked3">1 пересадка</label>
+                          </div>
+                          <div className="currency-checkbox custom-control custom-checkbox margin, marginDown">
+                            <input
+                              checked={this.state.stateOfCheckBox.includes(2)}
+                              onChange={() => this.handleCheck(2)}
+                              type="checkbox"
+                              className="custom-control-input"
+                              id="Checked4"
+                            />
+                            <label className="custom-control-label" htmlFor="Checked4">2 пересадки</label>
+                          </div>
+                          <div className="currency-checkbox custom-control custom-checkbox margin, marginDown">
+                            <input
+                              checked={this.state.stateOfCheckBox.includes(3)}
+                              onChange={() => this.handleCheck(3)}
+                              type="checkbox"
+                              className="custom-control-input"
+                              id="Checked5"
+                            />
+                            <label className="custom-control-label" htmlFor="Checked5">3 пересадки</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Col>
+                )
+                : null
+            }
+            <Col lg={9} md={9} sm={10} xs={12}>
+              <div className='flights-block'>
+                {this.state.tickets.filter(
+                  ticketWithTransfer => this.state.stateOfCheckBox.includes(ticketWithTransfer.stops),
+                )
+                  .map((ticket, i) => (
+                    <Flight
+                      key={i}
+                      price={` ${Math.round(ticket.price / this.state.currentCurrency)}
+                         ${this.state.currentStateOfButton} `}
+                      departure_time={`${ticket.departure_time}`}
+                      arrival_time={`${ticket.arrival_time}`}
+                      stops={`${ticket.stops}`}
                     />
-                    <label className="custom-control-label" htmlFor="Checked2">Без пересадок</label>
-                  </div>
-                  <div className="currency-checkbox custom-control custom-checkbox margin, marginDown">
-                    <input
-                      checked={this.state.stateOfCheckBox.includes(1)}
-                      onChange={() => this.handleCheck(1)}
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="Checked3"
-                    />
-                    <label className="custom-control-label" htmlFor="Checked3">1 пересадка</label>
-                  </div>
-                  <div className="currency-checkbox custom-control custom-checkbox margin, marginDown">
-                    <input
-                      checked={this.state.stateOfCheckBox.includes(2)}
-                      onChange={() => this.handleCheck(2)}
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="Checked4"
-                    />
-                    <label className="custom-control-label" htmlFor="Checked4">2 пересадки</label>
-                  </div>
-                  <div className="currency-checkbox custom-control custom-checkbox margin, marginDown">
-                    <input
-                      checked={this.state.stateOfCheckBox.includes(3)}
-                      onChange={() => this.handleCheck(3)}
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="Checked5"
-                    />
-                    <label className="custom-control-label" htmlFor="Checked5">3 пересадки</label>
-                  </div>
-                </div>
+                  ))
+                }
               </div>
-            </div>
-          </Col>
-          )
-          : null
-          }
+            </Col>
+          </Row>
         </Container>
       </div>
     )

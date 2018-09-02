@@ -26,4 +26,66 @@
     display: none;
   }
 }
-max-size-show-filter
+.max-size-show-filter {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.filter-block {
+  border: 1px;
+  background: white;
+  padding: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 5px;
+}
+
+.marginMiddle {
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.marginDown {
+  margin-bottom: 5px;
+}
+
+.marginUp {
+  margin-top: 10px;
+}
+
+.currency-btn-group {
+  .btn-outline-info {
+    border-color: #d2d5d6;
+    color: #17a2b8;
+    &:hover {
+      background-color: #f2fcff;
+      border-color: #2196f3;
+      color: #17a2b8;
+    }
+    &:focus {
+      background-color: #2196f3;
+    }
+  }
+}
+
+.currency-checkbox-background {
+  &:hover {
+    background-color: #f2fcff;
+
+  }
+}
+
+.currency-checkbox {
+  .custom-control-label:before {
+    background-color: white;
+    border: 1px solid #d2d5d6;
+  }
+  .custom-control-label:after {
+  }
+}
+
+.currency-checkbox-background {
+  &:hover {
+    background-color: #f2fcff;
+
+  }
+}

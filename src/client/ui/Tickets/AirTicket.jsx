@@ -10,8 +10,13 @@ export class AirTickets extends PureComponent {
       currentCurrency: 1,
       checked: false,
       stateOfCheckBox: [0, 1, 2, 3],
+      childVisible: true,
     };
     this.onRadioBtnClick = this.onRadioBtnClick.bind(this);
+  }
+
+  onClick() {
+    this.setState(prevState => ({ childVisible: !prevState.childVisible }));
   }
 
   onRadioBtnClick(currentStateOfButton) {

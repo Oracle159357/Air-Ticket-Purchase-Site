@@ -7,6 +7,10 @@ import {
 
 import imageCompanyOfTickets from 'images/logoOfCompany.png';
 
+import { getAllTicket } from '../../api/tickets';
+
+import { Flight } from './Flight';
+
 export class AirTickets extends PureComponent {
   constructor(props) {
     super(props);
@@ -15,9 +19,14 @@ export class AirTickets extends PureComponent {
       currentCurrency: 1,
       checked: false,
       stateOfCheckBox: [0, 1, 2, 3],
+      tickets: [],
       childVisible: true,
     };
     this.onRadioBtnClick = this.onRadioBtnClick.bind(this);
+  }
+
+  async componentDidMount() {
+    await this.loadPrice();
   }
 
   onClick() {
@@ -35,6 +44,11 @@ export class AirTickets extends PureComponent {
       this.setState({ currentCurrency: 78 });
     }
     this.setState({ currentStateOfButton });
+  }
+
+  async loadPrice() {
+    const { tickets } = await getAllTicket();
+    this.setState({ tickets });
   }
 
   handleCheck(numberOfTransfer) {
